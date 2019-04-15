@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Chave1
+  - Chave2
+  - Chave3
+  - Chave4
+  - Ferpa
+  - Chao
   layers:
   - Default
   - TransparentFX
@@ -50,6 +56,9 @@ TagManager:
   - name: Front
     uniqueID: 3512121041
     locked: 0
-  - name: New Layer
+  - name: Menu
     uniqueID: 1665722371
+    locked: 0
+  - name: New Layer
+    uniqueID: 2131298589
     locked: 0

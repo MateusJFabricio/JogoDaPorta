@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     private Rigidbody2D rb;
     public int velocidade;
     public int forcaPulo;
-    private bool estaChao = true, impulso = true;
+    private bool estaChao = true, impulsoDir = true, impulsoEsq = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,8 @@ public class Mover : MonoBehaviour
         if (col.gameObject.tag == "Chao")
         {
             estaChao = true;
-            impulso = true;
+            impulsoDir = true;
+            impulsoEsq = true;
         }
     }
     // Update is called once per frame
@@ -29,18 +30,23 @@ public class Mover : MonoBehaviour
     {
         float moveH = Input.GetAxis("Horizontal");
 
+        if (moveH > 0)
+            if (transform.localScale.x < 0)
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+
+        if (moveH < 0)
+            if (transform.localScale.x > 0)
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+
+
         //Mover para a direita
         if ((moveH > 0) && estaChao)
         {
-            if (transform.localScale.x < 0)
-             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             rb.velocity = new Vector2(moveH * velocidade, rb.velocity.y);
         }
         //Mover para a esquerda
         else if ((moveH < 0) && estaChao)
         {
-            if (transform.localScale.x > 0)
-                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             rb.velocity = new Vector2(moveH * velocidade, rb.velocity.y);
         }
         //Pular
@@ -49,21 +55,16 @@ public class Mover : MonoBehaviour
             rb.AddForce(new Vector2(0, forcaPulo), ForceMode2D.Impulse);
             estaChao = false;
         }
+
         //Impulso direita
-        if ((moveH > 0) && impulso)
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (transform.localScale.x < 0)
-                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             rb.AddForce(new Vector2(3, 0), ForceMode2D.Impulse);
-            impulso = false;
         }
         //Impulso esquerda
-        if ((moveH < 0) && impulso)
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (transform.localScale.x > 0)
-                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             rb.AddForce(new Vector2(-3, 0), ForceMode2D.Impulse);
-            impulso = false;
         }
 
     }

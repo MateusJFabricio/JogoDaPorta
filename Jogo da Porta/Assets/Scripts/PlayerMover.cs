@@ -7,7 +7,7 @@ public class PlayerMover : MonoBehaviour
     private Rigidbody2D rb;
     public int velocidade;
     public int forcaPulo;
-    private bool estaChao = true, impulsoDir = true, impulsoEsq = true;
+    private bool estaChao = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +21,6 @@ public class PlayerMover : MonoBehaviour
         if (col.gameObject.tag == "Chao")
         {
             estaChao = true;
-            impulsoDir = true;
-            impulsoEsq = true;
         }
     }
     // Update is called once per frame

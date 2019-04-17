@@ -8,12 +8,14 @@ public class PlayerMover : MonoBehaviour
     public int velocidade;
     public int forcaPulo;
     private bool estaChao = true;
+    private Transform te;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+        te = GameObject.Find("Te").gameObject.GetComponent<Transform>();
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -26,6 +28,7 @@ public class PlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        te.localPosition = transform.localPosition;
         float moveH = Input.GetAxis("Horizontal");
 
         if (moveH > 0)

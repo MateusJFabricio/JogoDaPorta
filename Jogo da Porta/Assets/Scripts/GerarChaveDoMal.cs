@@ -5,6 +5,7 @@ using UnityEngine;
 public class GerarChaveDoMal : MonoBehaviour
 {
     public GameObject chaveDoMal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,6 @@ public class GerarChaveDoMal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-           
     }
 
     private IEnumerator GeraChaveDoMal()

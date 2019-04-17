@@ -48,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Cen
+    uniqueID: 3051534829
+    locked: 0
   - name: Background
     uniqueID: 4060816355
     locked: 0
@@ -60,6 +63,6 @@ TagManager:
   - name: Menu
     uniqueID: 1665722371
     locked: 0
-  - name: New Layer
+  - name: Frente
     uniqueID: 2131298589
     locked: 0
